@@ -88,20 +88,21 @@ def test___sub__():
 def test___iadd__():
     m1 = MyMatrix([[2,4,7],[5,1,0]])
     m2 = MyMatrix([[1,2,3],[4,5,6]])
-    m3 = iadd(m1,m2) 
-    assert(m1.get_data() == [[2,4,7],[5,1,0]])
+    
+    assert(m1.get_data() == [[2,4,7],[5,1,0]])\
+    m1 += m2
     assert(m2.get_data() == [[1,2,3],[4,5,6]])
-    assert(m3.get_data() == [
+    assert(m1.get_data() == [
                              [3,6,10],
                              [9,6,6],
                             ])
 def test___isub__():
     m1 = MyMatrix([[2,4,7],[5,1,0]])
     m2 = MyMatrix([[1,2,3],[4,5,6]])
-    m3 = __isub__(m1,m2)
     assert(m1.get_data() == [[2,4,7],[5,1,0]])
+    m1 -= m2
     assert(m2.get_data() == [[1,2,3],[4,5,6]])
-    assert(m3.get_data() == [
+    assert(m1.get_data() == [
                              [1,2,4],
                              [1,-4,-6],
                             ])
