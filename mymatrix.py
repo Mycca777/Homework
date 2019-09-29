@@ -1,4 +1,5 @@
 import copy
+
 class MyMatrix:
     def __init__(self, data):
         """
@@ -11,6 +12,7 @@ class MyMatrix:
         Return TypeError if data is not list.
         """
         self.__data = copy.deepcopy(data)
+        
     def __repr__(self):
         str1 = []
         for i in range(len(self.__data)):
@@ -76,6 +78,7 @@ class MyMatrix:
     def get_data(self):
     	self1 = copy.deepcopy(self.__data)
         return self1
+    
 def __add__(some_list, another_list):
     m1 = MyMatrix(some_list)
     m2 = MyMatrix(another_list)
