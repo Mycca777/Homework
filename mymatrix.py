@@ -99,13 +99,9 @@ def __sub__(some_list, another_list):
     return result
 
 def __iadd__(some_list, another_list):
-    iadd0 = __add__(some_list, another_list)
-    some_list += another_list
-    assert(iadd0 == some_list)
+    some_list = __add__(some_list, another_list)
     return some_list
 
 def __isub__(some_list, another_list):
-    isub0 = __sub__(some_list, another_list)
-    some_list -= another_list
-    assert(isub0 == some_list)
+    some_list = __sub__(some_list, another_list)
     return some_list
