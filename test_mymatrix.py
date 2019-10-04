@@ -16,9 +16,9 @@ def test_size():
     assert(matrix1.size() == (1, 3))
 def test_transpose():
     matrix = MyMatrix(some_matrix)
-    matrix1 = matrix.transpose()
-    assert(matrix1.size() == (2, 3))
-    assert(matrix1.get_data() == [[1, 3, 5], [2, 4, 6]])
+    matrix.transpose()
+    assert(matrix.size() == (2, 3))
+    assert(matrix.get_data() == [[1, 3, 5], [2, 4, 6]])
 
     empty_matrix = MyMatrix([])
     empty_matrix.transpose()
@@ -51,9 +51,9 @@ def test_flipped_up_down():
 
 def test_flip_left_right():
     some_list = [[4, 5, 6], [1, 2, 3]]
-    m1 = MyMatrix(some_list)
-    m2 = m1.flip_left_right()
-    assert(m2.get_data() == [[6, 5, 4],[3, 2, 1]])
+    m = MyMatrix(some_list)
+    m.flip_left_right()
+    assert(m.get_data() == [[6, 5, 4],[3, 2, 1]])
 def test_flipped_left_right():
     matrix = MyMatrix(some_matrix)
     new_matrix = matrix.flipped_left_right()
