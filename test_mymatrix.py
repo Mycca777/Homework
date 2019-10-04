@@ -16,7 +16,7 @@ def test_size():
     assert(matrix1.size() == (1, 3))
 def test_transpose():
     matrix = MyMatrix(some_matrix)
-    matrix.transpose()
+    matrix = matrix.transpose()
     assert(matrix.size() == (2, 3))
     assert(matrix.get_data() == [[1, 3, 5], [2, 4, 6]])
 
