@@ -52,22 +52,18 @@ class MyMatrix:
         flr = MyMatrix(flr)
         s1 = flr.flip_left_right()
         return s1
-        tr = copy.deepcopy(self.__data)
-        tr = MyMatrix(tr)
-        s2 = tr.transpose()
-        return s2
     
     def transpose(self):
-        some_list = []
+        some_matrix = []
         k = 0
         for i in range(len(self.__data)):
              while k < len(self.__data[i]):
              	matrix = []
              	for j in range(len(self.__data)):
              		matrix.append(self.__data[i][k])
-             	some_list.append(matrix)
+             	some_matrix.append(matrix)
                 k += 1
-        return some_list
+        return some_matrix
 
     def transposed(self):
         tr = copy.deepcopy(self.__data)
@@ -79,32 +75,31 @@ class MyMatrix:
     	self1 = copy.deepcopy(self.__data)
         return self1
     
-def __add__(some_list, another_list):
-    m1 = MyMatrix(some_list)
-    m2 = MyMatrix(another_list)
-    sum0 = []
-    result = []
-    for i in range(len(some_list)):
-        for j in range(len(some_list[i])):
-           sum0.append(some_list[i][j] + another_list[i][j])
-    result.append(sum0)
-    return result
+    def __add__(self, other):
+        m1 = MyMatrix(self)
+        m2 = MyMatrix(other)
+        sum0 = []
+        result = []
+        for i in range(len(self)):
+           for j in range(len(self[i])):
+               sum0.append(self[i][j] + other[i][j])
+        result.append(sum0)
+        return result
+    def __sub__(self, other):
+        m1 = MyMatrix(self.__data)
+        m2 = MyMatrix(other)
+        sub0 = []
+        result = []
+        for i in range(len(self)):
+           for j in range(len(self.__data[i])):
+               sub0.append(self.__data[i][j] - other[i][j])
+        result.append(sub0)
+        return result
 
-def __sub__(some_list, another_list):
-    m1 = MyMatrix(some_list)
-    m2 = MyMatrix(another_list)
-    sub0 = []
-    result = []
-    for i in range(len(some_list)):
-        for j in range(len(some_list[i])):
-           sub0.append(some_list[i][j] + another_list[i][j])
-    result.append(sub0)
-    return result
+    def __iadd__(self, other):
+        some_matrix = __add__(self.__data, other)
+        return some_matrix
 
-def __iadd__(some_list, another_list):
-    some_list = __add__(some_list, another_list)
-    return some_list
-
-def __isub__(some_list, another_list):
-    some_list = __sub__(some_list, another_list)
-    return some_list
+    def __isub__(self, other):
+        some_matrix = __sub__(self.__data, other)
+        return some_matrix
