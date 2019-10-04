@@ -34,21 +34,24 @@ class MyMatrix:
         return korteh
     
     def flip_up_down(self):
+        print(type(self))
         for i in range(len(self.__data)//2):
             self.__data[i],self.__data[-i-1] = self.__data[-i-1],self.__data[i]
+        print(type(self))
         return self
     
     def flip_left_right(self):
+        some_matrix = []
         for i in range(len(self.__data)):
             for j in range(len(self.__data[i]) // 2):
-                self.__data[i][j],self.__data[i][-j - 1] = self.__data[i][- j- 1],self.__data[i][j]
+                self.__data[i][j], self.__data[i][-j - 1] = self.__data[i][- j- 1], self.__data[i][j]
         return self
 
     def flipped_up_down(self):
         fup = copy.deepcopy(self.__data)
         fup = MyMatrix(fup)
-        s0 = fup.flip_up_down()
-        return s0
+        fup.flip_up_down()
+        return fup
     
     def flipped_left_right(self):
         flr = copy.deepcopy(self.__data)
@@ -63,10 +66,10 @@ class MyMatrix:
              while k < len(self.__data[i]):
                 matrix = []
                 for j in range(len(self.__data)):
-                    matrix.append(self.__data[i][k])
+                    matrix.append(self.__data[j][k])
                 some_matrix.append(matrix)
                 k += 1
-        return some_matrix
+        return MyMatrix(some_matrix)
 
     def transposed(self):
         tr = copy.deepcopy(self.__data)
@@ -84,25 +87,30 @@ class MyMatrix:
         sum0 = []
         result = []
         for i in range(len(self.__data)):
-           for j in range(len(self.__data[i])):
+            for j in range(len(self.__data[i])):
                sum0.append(self.__data[i][j] + other.__data[i][j])
-        result.append(sum0)
-        return result
+            result.append(sum0)
+            sum0 = []
+        return MyMatrix(result)
     def __sub__(self, other):
         m1 = MyMatrix(self.__data)
         m2 = MyMatrix(other.__data)
         sub0 = []
         result = []
         for i in range(len(self.__data)):
-           for j in range(len(self.__data[i])):
+            for j in range(len(self.__data[i])):
                sub0.append(self.__data[i][j] - other.__data[i][j])
-        result.append(sub0)
-        return result
+            result.append(sub0)
+            sub0 = []
+        return MyMatrix(result)
 
     def __iadd__(self, other):
-        some_matrix = add(self.__data, other.__data)
+        some_matrix = self + other
         return some_matrix
 
     def __isub__(self, other):
-        some_matrix = sub(self.__data, other.__data)
+        print(type(self))
+        print(type(other))
+        some_matrix = self - other
+        print(type(some_matrix))
         return some_matrix
