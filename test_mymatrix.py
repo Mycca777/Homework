@@ -7,6 +7,8 @@ def test_repr():
 def test_size():
     m = [[12,3,4]]
     matrix = MyMatrix(m)
+    if matrix == [[]]:
+        assert(matrix.size == (0,0))
     assert(matrix.size() == (1, 3))
 def test_transpose():
     matrix = MyMatrix(some_list)
