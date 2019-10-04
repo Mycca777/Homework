@@ -23,7 +23,7 @@ def test_transpose():
     empty_matrix = MyMatrix([])
     empty_matrix.transpose()
     assert(empty_matrix.size() == (0, 0))
-    assert(matrix.data == [])
+    assert(empty_matrix.get_data() == [])
 
 def test_transposed():
     m1 = MyMatrix([[1, 2], [3, 4], [5, 6]])
@@ -33,42 +33,37 @@ def test_transposed():
 
 def test_flip_up_down():
     some_list = [[4, 5, 6], [1, 2, 3]]
-    m = MyMatrix(some_matrix)
+    m = MyMatrix(some_list)
     m.flip_up_down()
-    assert(m == [[1, 2, 3],[4, 5, 6]])
-    assert(m.get_data() == some_matrix)
-
-    empty_matrix = MyMatrix([])
-    empty_matrix.flip_up_down()
-    assert(empty_matrix.size() == (0, 0))
-    assert(matrix.data == [])
+    assert(m.get_data() == [[1, 2, 3],[4, 5, 6]])
 
 def test_flipped_up_down():
     some_list = [[4, 5, 6], [1, 2, 3]]
-    m1 = MyMatrix(some_matrix)
+    m1 = MyMatrix(some_list)
     m2 = m1.flipped_up_down()
-    assert(m2 == [[1, 2, 3],[4, 5, 6]])
-    assert(m1.get_data() == some_matrix)
-def test_flip_left_right():
-    some_list = [[4, 5, 6], [1, 2, 3]]
-    m = MyMatrix(some_list)
-    m = m.flip_left_right()
-    assert(m == [[6, 5, 4],[3, 2, 1]])
-    assert(m.get_data() == some_matrix)
+    assert(m2.get_data() == [[1, 2, 3],[4, 5, 6]])
+    assert(m1.get_data() == [[4, 5, 6], [1, 2, 3]])
 
     empty_matrix = MyMatrix([])
     empty_matrix.flip_left_right()
     assert(empty_matrix.size() == (0, 0))
-    assert(matrix.data == [])
+    assert(empty_matrix.get_data() == [])
 
+def test_flip_left_right():
+    some_list = [[4, 5, 6], [1, 2, 3]]
+    m1 = MyMatrix(some_list)
+    m2 = m1.flip_left_right()
+    assert(m2.get_data() == [[6, 5, 4],[3, 2, 1]])
 def test_flipped_left_right():
     matrix = MyMatrix(some_matrix)
     new_matrix = matrix.flipped_left_right()
     assert(new_matrix.size() == (3, 2))
-    assert(new_matrix.data == [[2, 1], [4, 3], [6, 5]])
+    assert(new_matrix.get_data() == [[2, 1], [4, 3], [6, 5]])
 
-    assert(matrix.size() == (3, 2))
-    assert(matrix.data == some_matrix)
+    empty_matrix = MyMatrix([])
+    empty_matrix.flip_left_right()
+    assert(empty_matrix.size() == (0, 0))
+    assert(empty_matrix.get_data() == [])
 def test___add__():
     m1 = MyMatrix([[2,4,7],[5,1,0]])
     m2 = MyMatrix([[1,2,3],[4,5,6]])
